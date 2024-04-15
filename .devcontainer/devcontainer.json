@@ -1,6 +1,14 @@
 {
   "image": "ghcr.io/tianocore/containers/fedora-35-dev:latest",
-  "postCreateCommand": "git config --global --add safe.directory * && pip install --upgrade -r pip-requirements.txt",
+  "postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && pip install --upgrade -r pip-requirements.txt",
+  "forwardPorts": [5000],
+  "privileged": true,
+  "containerEnv": {
+    "http_proxy": "http://proxy-us.intel.com:912",
+    "HTTP_PROXY": "http://proxy-us.intel.com:912",
+    "https_proxy": "http://proxy-us.intel.com:912",
+    "HTTPS_PROXY": "http://proxy-us.intel.com:912"
+  },  
   "customizations": {
     "vscode": {
       "extensions": [
